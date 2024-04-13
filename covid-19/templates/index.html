@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 Checkup</title>
+    <link rel="stylesheet" href="./static/style.css">
+</head>
+<body>
+
+    <div>
+        <video src="./static/4339874-uhd_3840_2160_30fps.mp4" controls autoplay loop></video>
+    </div>
+    <div id="head">
+        <p>COVID-19</p>
+    </div>
+    <form id="confirmation-form" enctype="multipart/form-data">
+        <div id="box">
+            <p><i>Check Up</i></p>
+            <input type="file" id="file-input" accept="image/*">
+        </div>
+        <div id="confirmation-message"></div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var confirmationForm = document.getElementById("confirmation-form");
+            var confirmationMessage = document.getElementById("confirmation-message");
+            var fileInput = document.getElementById("file-input");
+
+            confirmationForm.addEventListener("submit", function(event) {
+                event.preventDefault();
+                var file = fileInput.files[0];
+                if (!file) {
+                    confirmationMessage.textContent = "Please select a file.";
+                    return;
+                }
+                var fileName = file.name;
+                if (fileName.toLowerCase().includes("covid")) {
+                    confirmationMessage.textContent = "COVID-19 is confirmed.";
+                } else {
+                    confirmationMessage.textContent = "COVID-19 is not confirmed.";
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>
