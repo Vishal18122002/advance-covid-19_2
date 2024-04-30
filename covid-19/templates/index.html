@@ -22,29 +22,6 @@
         <div id="confirmation-message"></div>
         <button type="submit">Submit</button>
     </form>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var confirmationForm = document.getElementById("confirmation-form");
-            var confirmationMessage = document.getElementById("confirmation-message");
-            var fileInput = document.getElementById("file-input");
-
-            confirmationForm.addEventListener("submit", function(event) {
-                event.preventDefault();
-                var file = fileInput.files[0];
-                if (!file) {
-                    confirmationMessage.textContent = "Please select a file.";
-                    return;
-                }
-                var fileName = file.name;
-                if (fileName.toLowerCase().includes("covid")) {
-                    confirmationMessage.textContent = "COVID-19 is confirmed.";
-                } else {
-                    confirmationMessage.textContent = "COVID-19 is not confirmed.";
-                }
-            });
-        });
-    </script>
     
 </body>
 </html>
